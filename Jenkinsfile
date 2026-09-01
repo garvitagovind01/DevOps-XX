@@ -4,26 +4,26 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                bat 'python3 -m venv venv'
-                bat '. venv/Scripts/activate && pip install pytest flake8'
+                bat 'C:\\Users\\garvi\\AppData\\Local\\Programs\\Python\\Python312\\python.exe -m venv venv'
+                bat 'venv\\Scripts\\python.exe -m pip install pytest flake8'
             }
         }
 
         stage('Code Quality'){
             steps{
-                bat '. venv/Scripts/activate && flake8 cart.py orders.py || true'
+                 bat 'venv\\Scripts\\flake8.exe cart.py orders.py || exit /b 0'
             }
         }
 
         stage('Test') {
             steps {
-                bat '. venv/Scripts/activate && pytest'
+                bat 'venv\\Scripts\\puthon.exe -m pytest'
             }
         }
 
         stage('Package'){
             steps{
-                bat '. venv/Scripts/activate && python package.py'
+                bat 'venv\\Scripts\\python.exe package.py'
                 archiveArtifacts artifacts: 'foodexpress.zip', fingerprint: true
             }
         }
