@@ -17,7 +17,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                bat 'venv\\Scripts\\puthon.exe -m pytest'
+                bat 'venv\\Scripts\\python.exe -m pytest'
             }
         }
 
